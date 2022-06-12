@@ -1,10 +1,11 @@
 import pickle
 import streamlit as st
 from win32com.client import Dispatch
-
+import pyttsx3
 def speak(text):
-	speak=Dispatch(("SAPI.SpVoice"))
-	speak.Speak(text)
+	engine = pyttsx3.init()
+	engine.say(text)
+	engine.runAndWait()
 
 
 model = pickle.load(open('spam.pkl','rb'))
